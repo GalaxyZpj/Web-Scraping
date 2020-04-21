@@ -1,0 +1,4 @@
+scrapy
+pylint
+autopep8
+ipython

@@ -1,0 +1,107 @@
+################################################# S . T . A . R . T #################################################
+
+# Begin
+> Web Scraping: It means to scrap content from the web, HTML Pages, etc.
+> Scrapy: It is a python framework which is used for web scraping using python.
+
+
+# Scrapy Components
+> Spiders
+> Pipelines
+> Middlewares
+> Engine
+> Scheduler
+
+
+# Spider
+It is a component where we define what we want to extract from the web page.
+There are 5 types of spider classes available from scrapy:
+    > scrapy.Spider
+    > CrawlSpider
+    > XMLFeedSpider
+    > CSVFeedSpider
+    > SitemapSpider
+
+
+# Pipelines
+It is a component which functions on the data.
+It is used for:
+    > Cleaning the data
+    > Remove duplication
+    > Storing data
+
+
+# Middlewares
+It function is related to the request sent to the website and the response we get from the website.
+
+
+# Engine
+It ensures the functionality of all the components.
+
+
+# Scheduler
+It stores the sequence of operations which are to take place.
+
+
+# Working of Scrapy
+> Spider sends request to the Engine
+> Engine forwards the request to the Scheduler
+> Scheduler sends the request back to Engine
+> Engine forwards the request to the Middleware (Downloader Middleware)
+> The Middleware will get the response and will send it to the Engine
+> Engine will forward the response to the Spider (Spider Middleware) which will extract the desired data
+> The scraped items will be send to the Engine
+> Engine will send the items to the Pipeline for its processing
+
+
+# Robots.txt
+This is a file which is contained by the website.
+It has instructions for spiders weather the spider is allowed to scrap the website or not.
+It has the following instructions:
+    > User-Agent: It represents the identity of the spider
+    > Allow: It specifies the web pages which the spider is allowed to scrape
+    > Disallow: It specifies the web pages which the spider is not allowed to scrape
+
+
+# Starting a Scrapy Project
+$ scrapy startproject PROJECT_NAME
+
+
+# Generating new Spider
+$ scrapy genspider SPIDER_NAME WEBSITE
+This will produce a SPIDER_NAME.py file in the spiders folder of your project.
+
+* Remove 'http://' and the trailing '/' from the url as scrapy adds it by itself.
+
+
+# The SPIDER File
+The spider file consists of the following:
+    """
+    class SPIDER_NAMESpider(scrapy.Spider):
+        name = 'SPIDER_NAME'
+        allowed_domains = ['www.worldometers.info/world-population/population-by-country']
+        start_urls = ['http://www.worldometers.info/world-population/population-by-country/']
+
+        def parse(self, response):
+            pass
+    """
+'name' specifies the name of the spider.
+'allowed_domains' specifies the domain names of the link which are to be scrapped.
+    We can remove the traling url after the main domain.
+'start_urls' define where the spider should start scraping.
+    By default, scrapy uses http protocol.
+    We can change it to https if we want.
+parse() method is used to capture the response.
+
+
+# Scrapy Shell
+
+
+
+
+
+
+
+
+
+##################################################### E . N . D #####################################################
